@@ -2,20 +2,18 @@
 let list = [7, 13, 9, 8, 4, 1, 2, 16, 0];
 
 function bubbleSort(array) {
-    let result = array;
-    for (let i = result.length - 1; i >= 0; i--) {
+    const swap = (a,b) => [array[a], array[b]] = [array[b], array[a]];
+    for (let i = array.length - 1; i >= 0; i--) {
         for (let j = 0; j <= i - 1; j++) {
-            if (result[j] > result[j + 1]) {
-                let temp = result[j];
-                result[j] = result[j+1];
-                result[j+1] = temp;
+            if (array[j] > array[j + 1]) {
+                swap(j,j+1);
             }
         }
     }
-    return result;
 }
 
-console.log(bubbleSort(list)); // => 0,1,2,4,7,8,9,13,16
+bubbleSort(list);
+console.log(list.toString()); // => 0,1,2,4,7,8,9,13,16
 
 // opgave1.3.js
 
