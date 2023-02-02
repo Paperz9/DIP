@@ -1,10 +1,17 @@
-let word = "Der var engang en mand som hed Steen og han havde et ekstra ben";
-let words = word.split(" ");
-console.log(words[2]);
+let eksempel = "Der var engang en mand som hed Steen og han havde et ekstra ben";
 
-function antalForskelligeOrd(array) {
-    let map = new Map();
-    let antal = 0;
-    let indeks = 0;
 
+function antalForskellige(text) {
+    let words = text.split(" ");
+    let wordCount = {};
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+        if (wordCount.hasOwnProperty(word)) {
+            wordCount[word]++;
+        } else {
+            wordCount[word] = 1;
+        }
+    }
+    return wordCount;
 }
+console.log(antalForskellige(eksempel));
