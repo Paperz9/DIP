@@ -1,0 +1,13 @@
+/* opgave3_2.css */
+table.coll {
+    border-collapse: collapse;
+    height: 100px;
+}
+
+td {
+    border: 2px solid blue;
+}
+#header {
+    color : blue;
+    font-size: xx-large;
+}
