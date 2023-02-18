@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Yatzy</title>
+        <link rel="stylesheet" href="yatzy.css" />
+        <script src="yatzy.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="dice-container">
+                <table class="diceTable">
+                    <tr id="dices">
+                        <td id="dice1"><img src="Dice_1.png">
+                            <br> <input id="check1" type="checkbox"/></td>
+                        <td id="dice2"><img src="Dice_2.png"> 
+                            <br> <input id="check2" type="checkbox"/></td>
+                        <td id="dice3"><img src="Dice_3.png"> 
+                            <br> <input id="check3" type="checkbox"/></td>
+                        <td id="dice4"><img src="Dice_4.png"> 
+                            <br> <input id="check4" type="checkbox"/></td>
+                        <td id="dice5"><img src="Dice_5.png"> 
+                            <br> <input id="check5" type="checkbox"/></td>
+                    </tr>
+                </table>
+                <div class="button">
+                    <label id="turn">Turn 1</label>
+                    <button>Roll</button>
+                </div>
+            </div>
+            <div class="scoreBoard">
+                <div class="grid-item-row">
+                    <div class="grid-item-col">1-s</div>
+                    <div class="grid-item-col"><input id="1-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">2-s</div>
+                    <div class="grid-item-col"><input id="2-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">3-s</div>
+                    <div class="grid-item-col"><input id="3-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">4-s</div>
+                    <div class="grid-item-col"><input id="4-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">5-s</div>
+                    <div class="grid-item-col"><input id="5-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">6-s</div>
+                    <div class="grid-item-col"><input id="6-s" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Sum</div>
+                    <div class="grid-item-col"><input id="sum" readonly/></div>
+                    <div class="grid-item-col">Bonus</div>
+                    <div class="grid-item-col"><input id="bonus" readonly/></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">One pair</div>
+                    <div class="grid-item-col"><input id="one_pair" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Two pairs</div>
+                    <div class="grid-item-col"><input id="two_pairs" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Three same</div>
+                    <div class="grid-item-col"><input id="three_same" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Four same</div>
+                    <div class="grid-item-col"><input id="four_same" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Full house</div>
+                    <div class="grid-item-col"><input id="full_house" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Small straight</div>
+                    <div class="grid-item-col"><input id="small_straight" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Large straight</div>
+                    <div class="grid-item-col"><input id="large_straight" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Chance</div>
+                    <div class="grid-item-col"><input id="chance" readonly/></div>
+                    <div class="grid-item-col"></div>
+                    <div class="grid-item-col"></div>
+                </div>
+                <div class="grid-item-row">
+                    <div class="grid-item-col">Yatzy</div>
+                    <div class="grid-item-col"><input id="yatzy" readonly/></div>
+                    <div class="grid-item-col">Total</div>
+                    <div class="grid-item-col"> <input id="total" readonly/></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+img {
+    height: 50px;
+    width: 50px;
+}
+
+button {
+    width: 100px;
+    height: inherit;
+    float: right;
+}
+
+.button {
+    height: 50px;
+}
+
+.container {
+    width: 500px;
+}
+
+.diceTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dice-container {
+   border: 1px solid black;
+   border-collapse: separate;
+   padding: 10px;
+   margin: 10px; 
+}
+.scoreBoard {
+   border: 1px solid black;
+   border-collapse: separate;
+   padding: 10px;
+   margin: 10px;
+}
+
+td {
+    padding: 2px;
+    min-width: 50px;
+}
+
+input {
+    width: 75%;
+}
+
+div {
+    font-family: "Bookman Old Style", sans-serif;
+    color: black;
+}
+
+.grid-item-row {
+    display: flex;
+    padding: 5px;
+}
+
+.grid-item-col {
+    flex: 50%;
+    font-size: 90%;
+}
