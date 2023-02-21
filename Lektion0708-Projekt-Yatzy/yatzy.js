@@ -9,7 +9,8 @@ let dice5 = {face: 5, locked: false, pic: "Dice_5.png"};
 const diceList = [dice1,dice2,dice3,dice4,dice5];
 let diePicture = ["Dice_1.png","Dice_2.png","Dice_3.png","Dice_4.png","Dice_5.png","Dice_6.png"];
 let turn = 0;
-let score = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let score = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let counter = 0;
 
 
 // Ruller terningerne og sætter billeder tilsvarende de tegn der vises
@@ -52,8 +53,6 @@ function updateGame() {
         for (let i = 0; i < dices.length; i++) {
             document.body.querySelector("#dice" + (i + 1)).firstChild.src = diceList[i].pic;
         }
-    } else {
-        
     }
     updateScoreBoard();
     updateSum();
@@ -178,15 +177,15 @@ function updateScoreBoard() {
     for (let i = 0; i < 6; i++) {
         score[i] = sameValuePoints(i + 1);
     }
-    score[8] = onePair();
-    score[9] = twoPairs();
-    score[10] = threeSame();
-    score[11] = fourSame();
-    score[12] = fullHouse();
-    score[13] = smallStraight();
-    score[14] = largeStraight();
-    score[15] = chance();
-    score[16] = yatzy();
+    score[6] = onePair();
+    score[7] = twoPairs();
+    score[8] = threeSame();
+    score[9] = fourSame();
+    score[10] = fullHouse();
+    score[11] = smallStraight();
+    score[12] = largeStraight();
+    score[13] = chance();
+    score[14] = yatzy();
 
     for (let i = 0; i < scoreList.length; i++) {
         if (!scoreList[i].disabled) {
@@ -195,25 +194,46 @@ function updateScoreBoard() {
     }
 }
 
+function reset() {
+    for (let i = 0; i < scoreList.length; i++) {
+        if (!scoreList[i].disabled) {
+            scoreList[i].value = 0;
+        }  
+    }
+}
+
+function newGame() {
+    alert("Din totale score er: " + totalSum);
+    for (let i = 0; i < scoreList.length; i++) {
+            scoreList[i].value = 0;
+    }
+    updateSum();
+}
+
 function updateSum() {
     let sum = 0;
+    let bonus = 0;
     for (let i = 0; i < 6; i++) {
         if (scoreList[i].disabled) {
             sum += parseInt(scoreList[i].value);
         }
     }
-    scoreList[6].value = sum;
-    if (sum >= 53) {
-        scoreList[7].value = 50;
-    }
-
+    let s = document.getElementById("sum");
+    let b = document.getElementById("bonus");
+    s.innerText = sum;
+    if (sum >= 63) {
+        bonus = 50;
+    } 
+    b.innerText = bonus;
+    
     let totalSum = 0;
-    for (let i = 0; i < scoreList.length-1; i++) {
+    for (let i = 0; i < scoreList.length; i++) {
         if (scoreList[i].disabled) {
             totalSum += parseInt(scoreList[i].value);
         }
     }
-    scoreList[17].value = (sum + parseInt(scoreList[7].value + totalSum));
+    let total = document.getElementById("total");
+    total.innerText = totalSum + bonus;
 }
 
 let scoreList = [];
@@ -230,24 +250,31 @@ onload = () => {
     }
     for (let i = 0; i < checkPad.length; i++) {
         checkPad[i].onclick = () => {
-            diceList[i].locked = true;
-            checkPad[i].disabled = true
+            diceList[i].locked = !diceList[i].locked;
         };
     }
     for (let i = 0; i < scoreList.length; i++) {
         scoreList[i].onclick = () => {
-            scoreList[i].disabled = true;
-            turn = 0;
-            let t = document.getElementById("turn");
-            t.innerText = "Turn " + turn;
-            for (let e of checkPad) {
-                e.disabled = false;
-                e.checked = false;
+            if (turn !== 0) {
+                scoreList[i].disabled = true;
+                turn = 0;
+                let t = document.getElementById("turn");
+                t.innerText = "Turn " + turn;
+                for (let e of checkPad) {
+                    e.disabled = false;
+                    e.checked = false;
+                }
+                for (let e of diceList) {
+                    e.locked = false;
+                }
+                counter++;
+                counter == 15 ? newGame() : reset();
+                updateSum();
+                reset();
+            } else {
+                alert("Du kan ikke vælge felt før du har rullet!");
+                reset();
             }
-            for (let e of diceList) {
-                e.locked = false;
-            }
-            updateSum();
         }
     }
 }
