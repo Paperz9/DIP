@@ -204,8 +204,9 @@ function reset() {
 
 function newGame() {
     alert("Din totale score er: " + totalSum);
-    for (let i = 0; i < scoreList.length; i++) {
-            scoreList[i].value = 0;
+    for (let e of scoreList) {
+        e.disabled = false;
+        e.value = 0;
     }
     updateSum();
 }
@@ -240,7 +241,7 @@ let scoreList = [];
 let checkPad = [];
 
 onload = () => {
-    let knap = document.querySelector("button");
+    let knap = document.getElementById("roll");
     knap.onclick = updateGame;
     let inputs = document.body.querySelectorAll("input");
     inputs.forEach(e => scoreList.push(e));
@@ -268,7 +269,11 @@ onload = () => {
                     e.locked = false;
                 }
                 counter++;
-                counter == 15 ? newGame() : reset();
+                if (counter === 15) {
+                    knap.innerText = "Nyt spil";
+                    knap.onclick = newGame();
+                    counter = 0;
+                }
                 updateSum();
                 reset();
             } else {
