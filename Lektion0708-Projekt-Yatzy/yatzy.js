@@ -202,15 +202,6 @@ function reset() {
     }
 }
 
-function newGame() {
-    alert("Din totale score er: " + totalSum);
-    for (let e of scoreList) {
-        e.disabled = false;
-        e.value = 0;
-    }
-    updateSum();
-}
-
 function updateSum() {
     let sum = 0;
     let bonus = 0;
@@ -269,16 +260,19 @@ onload = () => {
                     e.locked = false;
                 }
                 counter++;
-                if (counter === 15) {
-                    knap.innerText = "Nyt spil";
-                    knap.onclick = newGame();
-                    counter = 0;
-                }
                 updateSum();
                 reset();
             } else {
                 alert("Du kan ikke vælge felt før du har rullet!");
                 reset();
+            }
+            if (counter === 15) {
+                alert("Nyt spil");
+                for (let e of scoreList) {
+                    e.disabled = false;
+                    e.value = 0;
+                }
+                updateSum();
             }
         }
     }
