@@ -1,7 +1,13 @@
-// Opgave 9.2
+// Opgave 9.3
 
 function compareSortAny(compareFunc, sortFunc) {
-    return list => sortFunc(list, compareFunc);
+    return list => {
+        if (list !== undefined && list.length > 1) {
+            sortFunc(list, compareFunc);
+        } else {
+            throw Error(`Invaild parameter`);
+        }
+    }
 }
 
 const compareLen = (s1, s2) => {
@@ -41,4 +47,8 @@ let arr = ["Kasper", "Ellinor", "Marlene", "Oskar", "Anne", "Rune"];
 console.log(arr);
 let lengthBubble = compareSortAny(compareLen, bubbleSort);
 lengthBubble(arr);
+console.log(arr);
+
+let noCaseBubble = compareSortAny(compareIgnoreCase, bubbleSort);
+noCaseBubble(arr);
 console.log(arr);
