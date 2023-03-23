@@ -16,3 +16,36 @@ const rumURL = 'https://beskedserver.azurewebsites.net/api/chatRum/';
 let aktueltChatrum = "alle";
 let beskeder = [];
 
+function opdaterBeskeder() {
+    beskederListe.innerHTML = "";
+
+    const visBeskeder = beskeder.filter(besked => aktueltChatrum === 'alle' || besked.chatrum === aktueltChatrum);
+
+    visBeskeder.forEach(besked => {
+        const li = document.createElement("li");
+        li.textContent = '{$besked.chatrum}: ${besked.tekst}';
+        beskederListe.appendChild(li);
+    });
+}
+
+async function hentBeskeder() {
+    try {
+        const response = await fetch(beskederURL);
+        beskeder = await response.json();
+        opdaterBeskeder();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function hentBeskederIChatrum(chatrum) {
+    try {
+        const response = await fetch('${soegBeskederURL}${chatrum}');
+        beskeder = await response.json();
+        aktueltChatrum = chatrum;
+        opdaterBeskeder();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
