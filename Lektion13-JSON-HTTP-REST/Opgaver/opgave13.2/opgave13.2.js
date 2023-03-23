@@ -49,3 +49,45 @@ async function hentBeskederIChatrum(chatrum) {
     }
 }
 
+async function opretBesked(chatrum, tekst) {
+    try {
+        await fetch(beskederURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Chatrum: chatrum,
+                Tekst: tekst
+            })
+        });
+        await hentBeskeder();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function sletBesked(nr) {
+    try {
+        await fetch('${beskederURL}${nr}', {
+            method: "DELETE"
+        });
+        await hentBeskeder();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+opretKnap.addEventListener("click", e => {
+    const valgtChatRum = chatrumSelect.value;
+    const beskedTekst = tekstInput.value;
+    opretBesked(valgtChatRum, beskedTekst);
+    tekstInput.value = "";
+});
+  
+sletKnap.addEventListener("click", e => {
+    const nr = prompt("Indtast nummeret på den besked, du vil slette:");
+    sletBesked(nr);
+});
+
+hentBeskeder();
