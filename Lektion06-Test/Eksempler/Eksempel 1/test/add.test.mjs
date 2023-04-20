@@ -1,5 +1,5 @@
-const assert = require('chai').assert;
-const { add } = require('../logic.js');
+import { assert } from 'chai';
+import { add } from '../logic.mjs';
 //   import { assert } from 'chai'
 // import { add } from '../logic.js'
 
@@ -15,5 +15,4 @@ describe('When add numbers', () => {
     const result = add(1,3)
     assert.equal(result,4)
   })
-
 })

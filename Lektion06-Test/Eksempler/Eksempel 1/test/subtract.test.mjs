@@ -1,5 +1,5 @@
-const assert = require('chai').assert;
-const { subtract } = require('../logic.js');
+import { assert } from 'chai';
+import { subtract } from '../logic.mjs';
 
 describe('When subtracting numbers', () => {
   it('Should return correct result', () => {

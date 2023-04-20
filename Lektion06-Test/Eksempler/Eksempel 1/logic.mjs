@@ -7,13 +7,13 @@
 // }
 
 // exports = {add, subtract}
-exports.add = (x,y) => {
+export function add(x,y) {
   if (x<0) {
     return -x+y;
   }
   return x + y
 }
 
-exports.subtract = (x,y) => {
+export function subtract(x,y) {
   return x - y
 }
