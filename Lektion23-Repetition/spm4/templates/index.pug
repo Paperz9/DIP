@@ -4,3 +4,17 @@ html
         title Express-app 3
         script(src='index.js')
     body
+        h1 Add Person
+        input(id='nameInput' type='text' placeholder='Name')
+        input(id='addressInput' type='text' placeholder='Address')
+        button(id='addPersonButton') Add Person
+        table
+            thead
+                tr
+                    th Name
+                    th Address
+            tbody
+                each person in persons
+                    tr
+                        td= person.name
+                        td= person.address
