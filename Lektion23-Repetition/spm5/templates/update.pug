@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        title Opdater Kontakt
+        script(src='index.js')
+    body
+        h1 Opdater Kontakt
+        form(action=`/update/${contact.id}`, method='post')
+            input(type='text', name='phone', placeholder='Nyt telefonnummer', value=contact.phone, required)
+            button(type='submit') Opdater nummer
