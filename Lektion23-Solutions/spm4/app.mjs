@@ -1,16 +1,20 @@
-const express = require('express');
+import express from 'express';
+import session from 'express-session';
+import path from "path";
+import { fileURLToPath } from "url";
+
 const app = express();
-const session = require('express-session');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.set('view engine', 'pug');
-app.set('views', 'templates');
+app.set("view engine", "pug");
+app.set("views", __dirname + "/views");
 
-app.use('/filer', express.static(__dirname+'/filer'));
-// app.use(express.static('filer'));
+app.use(express.static(__dirname + "/filer"));
 app.use(express.json());
 app.use(session({secret: 'hemmelig', saveUninitialized: true, resave: true}));
 
-let personer = [];
+const personer = [];
 
 app.get('/', function (request, response) {
     if (request.session.personer == null) {

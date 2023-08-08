@@ -1,0 +1,16 @@
+doctype html
+html 
+    head 
+        title Min Webserver
+    body 
+        h1 Velkommen til min webserver 
+        table(border="1")
+            tr 
+                th Navn
+                th Efternavn
+                th Alder 
+            each item in data 
+                tr 
+                    td= item.name
+                    td= ''
+                    td= item.age
