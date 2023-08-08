@@ -11,6 +11,17 @@ html
                 th Alder 
             each item in data 
                 tr 
-                    td= item.name
-                    td= ''
+                    td(onclick="showEfternavn(this)", data-lastname=item.lastName)= item.name
+                    td(class="lastname-cell")= ''
                     td= item.age
+        script. 
+            function showEfternavn(element) {
+                let lastnameCell = element.nextElementSibling;
+                let lastname = lastnameCell.textContent.trim();
+                
+                if (lastname === '') {
+                    lastnameCell.textContent = element.getAttribute("data-lastname");
+                } else {
+                    lastnameCell.textContent = '';
+                }
+            }
